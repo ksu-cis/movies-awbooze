@@ -13,6 +13,19 @@ namespace Movies
 
         public string Major_Genre { get; set; }
 
+        public string Director { get; set; }
+
+        public string Release_Date { get; set; }
+
+        public string Release_Year
+        {
+            get
+            {
+                string[] parts = Release_Date.Split(" ");
+                return parts[parts.Length - 1];
+            }
+        }
+
         public float? IMDB_Rating { get; set; }
 
         public float? Rotten_Tomatoes_Rating { get; set; }

@@ -9,10 +9,51 @@ namespace Movies.Pages
 {
     public class IndexModel : PageModel
     {
+        public MovieDatabase MovieDatabase = new MovieDatabase();
+
+        public List<Movie> Movies;
+
+        [BindProperty]
+        public string search { get; set; }
+
+        [BindProperty]
+        public List<string> mpaa { get; set; } = new List<string>();
+
+        [BindProperty]
+        public float? minIMDB { get; set; }
 
         public void OnGet()
         {
+            Movies = MovieDatabase.All;
+        }
 
+        public void OnPost()
+        {
+            if (search != null && mpaa.Count > 0)
+            {
+                // Search and filter
+                Movies = MovieDatabase.Search(search);
+                Movies = MovieDatabase.FilterByMPAA(Movies, mpaa);
+            }
+            else if (search != null)
+            {
+                // Just search
+                Movies = MovieDatabase.Search(search);
+            }
+            else if (mpaa.Count > 0)
+            {
+                // Filter
+                Movies = MovieDatabase.FilterByMPAA(MovieDatabase.All, mpaa);
+            }
+            else
+            {
+                Movies = MovieDatabase.All;
+            }
+
+            if (minIMDB is float min)
+            {
+                Movies = MovieDatabase.FilterByMinIMDB(Movies, min);
+            }
         }
     }
 }

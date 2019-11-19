@@ -1,2 +1,56 @@
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification 
 for details on configuring this project to bundle and minify static web assets. */
+
+.container {
+    /*display: flex;
+    flex-direction: row;*/
+
+    display: grid;
+    grid-template-columns: 1fr 300px;
+}
+
+form {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.movie-entry {
+    border-bottom: 1px dashed grey;
+    padding-bottom: 10px;
+}
+
+.genre {
+    color: coral;
+}
+
+.rating {
+    color: darkmagenta;
+}
+
+.director {
+    color: olivedrab;
+}
+
+.ratings {
+    display: flex;
+    flex-direction: row;
+}
+
+.ratings > div {
+    width: 100px;
+    border: 1px solid grey;
+    color: grey;
+    text-align: center;
+}
+
+.ratings > div > span {
+    display: block;
+    height: 20px;
+}
